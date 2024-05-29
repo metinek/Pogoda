@@ -10,9 +10,13 @@
             VerticalOptions="Center"
             HorizontalOptions="Center">
 
-
+            <Image
+                Source=""/>
+            
             <Label
                 x:Name="lblWynik"/>
+            
+            
         </VerticalStackLayout>
     </ScrollView>
 

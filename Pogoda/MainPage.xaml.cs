@@ -4,6 +4,32 @@ using System.Text.Json;
 namespace Pogoda
 {
 
+    public class Forecast
+    {
+        public string? cod { get; set; }
+        public City? city { get; set; }
+        public IList<Prognoza>? list { get; set; }
+    }
+
+
+    public class Prognoza
+    {
+        public int? dt { get; set; }
+
+        public string? dt_txt { get; set; }
+
+        public MainInfo? main { get; set; }
+
+    }
+
+
+    public class City
+    {
+        public int? id { get; set; }
+        public string? name { get; set; }
+
+    }
+
 
     class Weather
     {
@@ -22,10 +48,6 @@ namespace Pogoda
 
         public MainInfo? main { get; set; }
     }
-
-
-
-
 
 
 
@@ -65,20 +87,45 @@ namespace Pogoda
 
         public MainPage()
         {
-            string url = "https://api.openweathermap.org/data/2.5/weather?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
+            //string url = "https://api.openweathermap.org/data/2.5/weather?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
+            string url = "https://api.openweathermap.org/data/2.5/forecast?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
             string? json;
             using (WebClient wc = new WebClient())
             {
                 json = wc.DownloadString(url);
             }
             InitializeComponent();
-            Weather w = JsonSerializer.Deserialize<Weather>(json);
+            //Weather w = JsonSerializer.Deserialize<Weather>(json);
+
+
+            /*
             string s = $"{w.name}\n";
             s+= $"coord: lat: {w.coord.lat} lon: {w.coord.lon}\n";
             s+= $"timezone: {w.timezone}\n";
-            s += $"temperatura: {(w.main.temp-273).ToString("#")} stopni\n";
+            s += $"temperatura: {(int)(w.main.temp-273)} stopni\n";
             s += $"ciśnienie: {w.main.pressure} hPa\n";
             s += $"wilgotność: {w.main.humidity} %\n";
+            */
+
+
+
+
+
+            Forecast f = JsonSerializer.Deserialize<Forecast>(json);
+
+
+            string s="";
+            s += $"kod {f.cod}\n";
+            s += $"miasto {f.city.name}\n\n";
+
+            foreach (var e in f.list)
+            {
+                s += e.dt_txt + "\n";
+                s += $"temperatura: {(int)(e.main.temp - 273)} stopni\t";
+                s += $"ciśnienie: {e.main.pressure} hPa\t";
+                s += $"wilgotność: {e.main.humidity} %\n\n";
+            }
+
             lblWynik.Text = s;
         }
 

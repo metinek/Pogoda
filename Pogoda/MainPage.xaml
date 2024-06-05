@@ -11,7 +11,8 @@
             HorizontalOptions="Center">
 
             <Image
-                Source=""/>
+                Source="https://openweathermap.org/img/wn/10d@2x.png"
+                HeightRequest="500"/>
             
             <Label
                 x:Name="lblWynik"/>

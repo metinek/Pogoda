@@ -28,8 +28,152 @@
 
             <Label
                 x:Name="lblWynik"/>
-            
-            
+
+
+            <Label
+                Text="Prognoza na 24 godziny"/>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    x:Name="lbl00"
+                    Text="9:00"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"/>
+
+                <Image
+                    x:Name="lbl01"
+                    Source="http://openweathermap.org/img/wn/10d.png"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    WidthRequest="50"/>
+                
+                <Label
+                    x:Name="lbl02"
+                    Text="15 °C"
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    HorizontalOptions="Center"/>
+
+
+
+
+
+
+
+
+
+
+
+
+                <Label
+                    x:Name="lbl10"
+                    Text="9:00"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"/>
+
+                <Image
+                    x:Name="lbl11"
+                    Source="http://openweathermap.org/img/wn/10d.png"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    WidthRequest="50"/>
+
+                <Label
+                    x:Name="lbl12"
+                    Text="15 °C"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    HorizontalOptions="Center"/>
+
+
+
+
+
+
+                <Label
+                    x:Name="lbl20"
+                    Text="9:00"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"/>
+
+                <Image
+                    x:Name="lbl21"
+                    Source="http://openweathermap.org/img/wn/10d.png"
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    WidthRequest="50"/>
+
+                <Label
+                    x:Name="lbl22"
+                    Text="15 °C"
+                    Grid.Column="2"
+                    Grid.Row="2"
+                    HorizontalOptions="Center"/>
+
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+
+                <Label
+                    x:Name="lbl30"
+                    Text="9:00"
+                    Grid.Column="3"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"/>
+
+                <Image
+                    x:Name="lbl31"
+                    Source="http://openweathermap.org/img/wn/10d.png"
+                    Grid.Column="3"
+                    Grid.Row="1"
+                    WidthRequest="50"/>
+
+                <Label
+                    x:Name="lbl32"
+                    Text="15 °C"
+                    Grid.Column="3"
+                    Grid.Row="2"
+                    HorizontalOptions="Center"/>
+
+
+
+
+
+
+
+
+            </Grid>
+
+
+
+
+
         </VerticalStackLayout>
     </ScrollView>
 

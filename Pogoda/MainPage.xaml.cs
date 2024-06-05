@@ -122,11 +122,11 @@ namespace Pogoda
             s += $"temperatura: {(int)(w.main.temp-273)} °C\n";
             s += $"ciśnienie: {w.main.pressure} hPa\n";
             s += $"wilgotność: {w.main.humidity} %\n";
+            lblWynik.Text = s;
 
 
 
-
-            url = "https://api.openweathermap.org/data/2.5/forecast?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
+            url = "https://api.openweathermap.org/data/2.5/forecast?lat=50.72&lon=23.22&appid=0c48b0e78aaf745e4cb29b309aa64923";
             using (WebClient wc = new WebClient())
             {
                 json = wc.DownloadString(url);
@@ -137,10 +137,11 @@ namespace Pogoda
 
 
             s="";
-            s += $"kod {f.cod}\n";
-            s += $"miasto {f.city.name}\n\n";
+            //s += $"kod {f.cod}\n";
+            s += $"{f.city.name}";
             lblMiasto.Text = s;
             s = "";
+            /*
             foreach (var e in f.list)
             {
                 s += e.dt_txt + "\n";
@@ -150,6 +151,7 @@ namespace Pogoda
             }
 
             lblWynik.Text = s;
+            */
             string imgURL = "http://openweathermap.org/img/wn/";
             imgURL += w.weather[0].icon + ".png";
             imgPogoda.Source=imgURL;

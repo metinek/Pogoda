@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Pogoda"
     Shell.FlyoutBehavior="Disabled">
-
+    
     <ShellContent
         Title="Pogoda"
         ContentTemplate="{DataTemplate local:MainPage}"

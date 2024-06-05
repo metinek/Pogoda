@@ -1,19 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Pogoda.MainPage">
+             x:Class="Pogoda.MainPage"
+             Shell.BackgroundColor="MidnightBlue"
+             Shell.TitleColor="Gold">
 
-    <ScrollView>
+    <ScrollView
+        BackgroundColor="SkyBlue">
         <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center"
+            Spacing="15"
+            Padding="35"
             HorizontalOptions="Center">
 
-            <Image
-                Source="https://openweathermap.org/img/wn/10d@2x.png"
-                HeightRequest="500"/>
-            
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center">
+                <Label
+                    x:Name="lblMiasto"
+                    FontSize="Subtitle"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"/>
+                <Image
+                    x:Name="imgPogoda"
+                    WidthRequest="50"
+                    VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
             <Label
                 x:Name="lblWynik"/>
             

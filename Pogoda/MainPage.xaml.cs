@@ -31,6 +31,26 @@ namespace Pogoda
     }
 
 
+
+
+
+    class Clouds
+    {
+        public int? id { set; get; }
+
+        public string? main { get; set; }
+
+        public string? description { get; set; }
+
+        public string? icon { get; set; }
+
+    }
+
+
+
+
+
+
     class Weather
     {
         public string? baza { get; set; }
@@ -47,9 +67,9 @@ namespace Pogoda
         public Coord? coord{ get; set; }
 
         public MainInfo? main { get; set; }
+
+        public List<Clouds>? weather { get; set; }
     }
-
-
 
 
 
@@ -61,10 +81,6 @@ namespace Pogoda
         public double? lat { get; set; }
 
     }
-
-
-
-
 
 
 
@@ -87,37 +103,38 @@ namespace Pogoda
 
         public MainPage()
         {
-            //string url = "https://api.openweathermap.org/data/2.5/weather?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
-            string url = "https://api.openweathermap.org/data/2.5/forecast?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
+            string url = "https://api.openweathermap.org/data/2.5/weather?lat=50.72&lon=23.22&appid=0c48b0e78aaf745e4cb29b309aa64923";
+            //string url = "https://api.openweathermap.org/data/2.5/forecast?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
             string? json;
             using (WebClient wc = new WebClient())
             {
                 json = wc.DownloadString(url);
             }
             InitializeComponent();
-            //Weather w = JsonSerializer.Deserialize<Weather>(json);
+            Weather w = JsonSerializer.Deserialize<Weather>(json);
+
+
+            lblMiasto.Text = $"{w.name}";
+            string s = "";
+            //s += $"coord: lat: {w.coord.lat} lon: {w.coord.lon}\n";
+            //s += $"timezone: {w.timezone}\n";
+            s += $"temperatura: {(int)(w.main.temp-273)} °C\n";
+            s += $"ciśnienie: {w.main.pressure} hPa\n";
+            s += $"wilgotność: {w.main.humidity} %\n";
+
+
+
 
 
             /*
-            string s = $"{w.name}\n";
-            s+= $"coord: lat: {w.coord.lat} lon: {w.coord.lon}\n";
-            s+= $"timezone: {w.timezone}\n";
-            s += $"temperatura: {(int)(w.main.temp-273)} stopni\n";
-            s += $"ciśnienie: {w.main.pressure} hPa\n";
-            s += $"wilgotność: {w.main.humidity} %\n";
-            */
-
-
-
-
-
-            Forecast f = JsonSerializer.Deserialize<Forecast>(json);
+             * Forecast f = JsonSerializer.Deserialize<Forecast>(json);
 
 
             string s="";
             s += $"kod {f.cod}\n";
             s += $"miasto {f.city.name}\n\n";
-
+            lblMiasto.Text = s;
+            s = "";
             foreach (var e in f.list)
             {
                 s += e.dt_txt + "\n";
@@ -125,8 +142,12 @@ namespace Pogoda
                 s += $"ciśnienie: {e.main.pressure} hPa\t";
                 s += $"wilgotność: {e.main.humidity} %\n\n";
             }
+            */
 
             lblWynik.Text = s;
+            string imgURL = "http://openweathermap.org/img/wn/";
+            imgURL += w.weather[0].icon + ".png";
+            imgPogoda.Source=imgURL;
         }
 
         private void OnCounterClicked(object sender, EventArgs e){}

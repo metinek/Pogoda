@@ -104,7 +104,6 @@ namespace Pogoda
         public MainPage()
         {
             string url = "https://api.openweathermap.org/data/2.5/weather?lat=50.72&lon=23.22&appid=0c48b0e78aaf745e4cb29b309aa64923";
-            //string url = "https://api.openweathermap.org/data/2.5/forecast?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
             string? json;
             using (WebClient wc = new WebClient())
             {
@@ -112,6 +111,8 @@ namespace Pogoda
             }
             InitializeComponent();
             Weather w = JsonSerializer.Deserialize<Weather>(json);
+
+
 
 
             lblMiasto.Text = $"{w.name}";
@@ -125,12 +126,17 @@ namespace Pogoda
 
 
 
+            url = "https://api.openweathermap.org/data/2.5/forecast?lat=50.50&lon=23.11&appid=0c48b0e78aaf745e4cb29b309aa64923";
+            using (WebClient wc = new WebClient())
+            {
+                json = wc.DownloadString(url);
+            }
 
-            /*
-             * Forecast f = JsonSerializer.Deserialize<Forecast>(json);
+
+            Forecast f = JsonSerializer.Deserialize<Forecast>(json);
 
 
-            string s="";
+            s="";
             s += $"kod {f.cod}\n";
             s += $"miasto {f.city.name}\n\n";
             lblMiasto.Text = s;
@@ -142,7 +148,6 @@ namespace Pogoda
                 s += $"ciśnienie: {e.main.pressure} hPa\t";
                 s += $"wilgotność: {e.main.humidity} %\n\n";
             }
-            */
 
             lblWynik.Text = s;
             string imgURL = "http://openweathermap.org/img/wn/";
